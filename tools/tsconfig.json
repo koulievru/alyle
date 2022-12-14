@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020"],
+    "module": "es2020",
+    "outDir": "../dist/tools",
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2020",
+    "noFallthroughCasesInSwitch": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
+  },
+  "compileOnSave": false,
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/generate-api-docs.ts",
+    "src/**/*.test.ts",
+  ]
+}

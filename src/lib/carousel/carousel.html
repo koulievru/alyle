@@ -1,0 +1,39 @@
+<div
+(slidestart)="touch && _onDragStart()"
+(slideleft)="touch && _onDrag($event)"
+(slideright)="touch && _onDrag($event)"
+(slidecancel)="touch && _onDragCancel()"
+(slideend)="touch && _onDragEnd($event)"
+#slideContainer
+>
+  <div #_slide [className]="classes.slide">
+    <ng-content></ng-content>
+  </div>
+  <ol [className]="classes.indicators" *ngIf="lyItems.length !== 1 && hasNavigationIndicators">
+    <li
+      *ngFor="let item of lyItems; index as i"
+      [ngClass]="[classes.indicator, selectedIndex == i ? classes.indicatorActive : '']"
+      (click)="_select(i)"
+    >
+      <span
+        [class]="classes.indicatorIcon"
+      ></span>
+    </li>
+  </ol>
+  <div *ngIf="hasNavigationArrows" [ngClass]="[classes.actions, 'left']" (click)="prev()">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+  </div>
+  <div *ngIf="hasNavigationArrows" [ngClass]="[classes.actions, 'right']" (click)="next()">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+  </div>
+  <div
+    [className]="classes.barContainer"
+    *ngIf="hasProgressBar && _isIntervalFn && interval && autoplay"
+  >
+    <div
+      [className]="classes.bar"
+      #_progressBar
+      [style.animation-duration]="interval + 'ms'"
+    ></div>
+  </div>
+</div>

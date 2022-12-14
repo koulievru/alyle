@@ -1,0 +1,11 @@
+<button ly-button
+  [lyMenuTriggerFor]="menuTemplateRef"
+>Menu</button>
+
+<ng-template #menuTemplateRef let-M>
+  <ly-menu [ref]="M">
+    <button ly-button ly-menu-item *ngFor="let item of [null, null, null]; index as i">
+      <span>Item {{ i + 1 }}</span>
+    </button>
+  </ly-menu>
+</ng-template>

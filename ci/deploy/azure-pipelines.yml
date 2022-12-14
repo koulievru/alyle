@@ -1,0 +1,60 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+  - master
+
+pr: none
+
+jobs:
+- job: NightlyArtifacts
+  displayName: Nightly Artifacts
+  pool:
+    vmImage: 'ubuntu-20.04'
+  condition: eq(variables['build.reason'], 'Schedule')
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+  - script: yarn
+    displayName: 'Install dependencies'
+
+  - script: |
+      yarn tools:bump-nightly
+      yarn tools:prepare-lib
+      set -e && yarn build:@alyle/ui
+      echo $(node -p -e "require('./package.json').version")
+    displayName: 'Build @alyle/ui'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: 'dist/@alyle/ui'
+      artifactName: 'alyle-ui-pkg'
+
+- job: Bump
+  displayName: Bump Version
+  pool:
+    vmImage: 'ubuntu-20.04'
+  condition: eq(variables['BumpVersion'], 'true')
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+  - script: |
+      yarn tools:bump
+      PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
+      echo $PACKAGE_VERSION
+      yarn tools:prepare-lib
+      yarn build
+    displayName: 'Build'
+  - script: |
+      yarn tools:deploy
+      npm publish dist/@alyle/ui
+      git add -A
+      git commit --allow-empty -m "release @alyle/ui ${PACKAGE_VERSION} :tada::tada::tada:" -m "[ci skip]"
+      git tag $PACKAGE_VERSION
+      git push origin master --tags
+    displayName: 'Deploy'

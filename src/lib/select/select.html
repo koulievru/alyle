@@ -1,0 +1,22 @@
+<div #valueText [ngSwitch]="empty">
+  <div [className]="classes.valueText" *ngSwitchCase="true">{{ '\u00A0' }}</div>
+  <div [className]="classes.valueText" *ngSwitchDefault [ngSwitch]="!!customTrigger">
+    <span *ngSwitchDefault>{{ triggerValue || '\u00A0' }}</span>
+    <ng-content select="ly-select-trigger" *ngSwitchCase="true"></ng-content>
+  </div>
+</div>
+
+<ng-template #templateRef let-getOverlay>
+  <div
+    #container
+    tabindex="-1"
+    role="listbox"
+    [className]="classes.container"
+    [@selectEnter]="'in'"
+    (@selectEnter.done)="_panelDoneAnimatingStream.next({state: $event.toState, overlay: getOverlay()})"
+    (keydown)="_handleKeydown($event)"
+    [style.font-size.px]="_triggerFontSize"
+  >
+    <ng-content></ng-content>
+  </div>
+</ng-template>

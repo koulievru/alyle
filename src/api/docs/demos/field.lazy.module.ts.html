@@ -1,0 +1,39 @@
+<pre class="ttb"><code prsm class="ttm"><span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> NgModule<span class="tt18 ttae">,</span> Type <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'@angular/core'</span><span class="tt18 ttae">;</span>
+
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> BasicFieldComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./basic-field/basic-field.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldPlaygroundComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-playground/field-playground.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> SimpleFormComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./simple-form/simple-form.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> BasicFieldModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./basic-field/basic-field.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldPlaygroundModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-playground/field-playground.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> SimpleFormModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./simple-form/simple-form.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithCdkAutosizeModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-cdk-autosize/field-with-cdk-autosize.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithCdkAutosizeComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-cdk-autosize/field-with-cdk-autosize.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithPrefixAndSuffixComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-prefix-and-suffix/field-with-prefix-and-suffix.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithPrefixAndSuffixModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-prefix-and-suffix/field-with-prefix-and-suffix.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithDisplayWithModule <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-display-with/field-with-display-with.module'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> FieldWithDisplayWithComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'./field-with-display-with/field-with-display-with.component'</span><span class="tt18 ttae">;</span>
+<span class="tt18 tt1j">import</span> <span class="tt18 ttae">&#123;</span> WithCustomElementComponent <span class="tt18 ttae">&#125;</span> <span class="tt18 tt1j">from</span> <span class="tt18 tt3z">'@app/docs/element-registry'</span><span class="tt18 ttae">;</span>
+
+<span class="tt18 tt1j">const</span> elements <span class="tt18 ttb0">=</span> <span class="tt18 ttae">[</span>
+  BasicFieldComponent<span class="tt18 ttae">,</span>
+  FieldPlaygroundComponent<span class="tt18 ttae">,</span>
+  SimpleFormComponent<span class="tt18 ttae">,</span>
+  FieldWithCdkAutosizeComponent<span class="tt18 ttae">,</span>
+  FieldWithPrefixAndSuffixComponent<span class="tt18 ttae">,</span>
+  FieldWithDisplayWithComponent
+<span class="tt18 ttae">]</span><span class="tt18 ttae">;</span>
+
+<span class="tt18 ttdr"><span class="tt18 ttdg ttb0">@</span><span class="tt18 tta3">NgModule</span></span><span class="tt18 ttae">(</span><span class="tt18 ttae">&#123;</span>
+  imports<span class="tt18 ttb0">:</span> <span class="tt18 ttae">[</span>
+    BasicFieldModule<span class="tt18 ttae">,</span>
+    FieldPlaygroundModule<span class="tt18 ttae">,</span>
+    SimpleFormModule<span class="tt18 ttae">,</span>
+    FieldWithCdkAutosizeModule<span class="tt18 ttae">,</span>
+    FieldWithPrefixAndSuffixModule<span class="tt18 ttae">,</span>
+    FieldWithDisplayWithModule
+  <span class="tt18 ttae">]</span>
+<span class="tt18 ttae">&#125;</span><span class="tt18 ttae">)</span>
+<span class="tt18 tt1j">export</span> <span class="tt18 tt1j">class</span> <span class="tt18 ttc8">LazyModule</span> <span class="tt18 tt1j">implements</span> <span class="tt18 ttc8">WithCustomElementComponent</span> <span class="tt18 ttae">&#123;</span>
+  customElementComponents<span class="tt18 ttb0">:</span> Type<span class="tt18 ttb0">&lt;</span><span class="tt18 ttcj">any</span><span class="tt18 ttb0">></span><span class="tt18 ttae">[</span><span class="tt18 ttae">]</span> <span class="tt18 ttb0">=</span> elements<span class="tt18 ttae">;</span>
+<span class="tt18 ttae">&#125;</span>
+</code></pre>
